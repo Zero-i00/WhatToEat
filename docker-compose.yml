@@ -1,0 +1,67 @@
+version: "3.3"
+
+services:
+
+  db:
+    image: postgres
+    environment:
+      - TZ=UTC
+      - POSTGRES_DB=eatings
+      - POSTGRES_USER=eatings_admin
+      - POSTGRES_PASSWORD=jhko0WdaA88DSXqq
+      - TIMEOUT=7000
+    volumes:
+      - .:/trafic
+    restart: always
+
+
+  web:
+    build: .
+    command: sh -c "gunicorn WhatToEatToday.wsgi -b 0.0.0.0:8000 --timeout 900"
+    volumes:
+      - .:/trafic
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: always
+
+
+#    restart: always
+#
+#  worker:
+#    image: celery
+#    command: [ "celery", "-A WhatToEatToday", "worker", "--loglevel=info"]
+#    environment:
+#      <<: *env
+
+  rabbitmq:
+    container_name: rabbitmq
+    hostname: rabbitmq
+    image: rabbitmq:latest
+    ports:
+      - "5673:5673"
+    restart: always
+
+  worker:
+    build:
+      context: .
+    command: sh -c "celery -A WhatToEatToday worker -B --loglevel=info"
+    volumes:
+      - .:/what_to_eat_today
+    links:
+      - rabbitmq
+    depends_on:
+      - rabbitmq
+    restart: always
+#
+#  flower:
+#      image: mher/flower
+#      restart: always
+#      command: ["celery", "flower", "--address=0.0.0.0", "--broker=CELERY_BROKER_URL","--port=5555", "--logging=DEBUG"]
+#      environment:
+#        CELERY_BROKER_URL: amqp://rabbitmq:5672
+#      depends_on:
+#        - rabbitmq
+#      ports:
+#        - 5555:5555

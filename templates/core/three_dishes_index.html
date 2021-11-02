@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Will You Eat...
+{% endblock %}
+
+{% block content %}
+<body>
+     <form method="post">
+            {% csrf_token %}
+            <div class="research-dishes-box ">
+                <button type="submit" class="research-dishes-btn">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
+     </form>
+     <div class="dishes-container">
+         {% if dishes %}
+         {% for dish in dishes %}
+             <div class="dish-card">
+                 <div class="dish-circle">
+                     {% if dish.image %}
+                          <a href="{{ dish.image.url }}" target="_blank">
+                             <img src="{{ dish.image.url }}" alt="dish">
+                         </a>
+                     {% else %}
+                        <h2>{{ dish.dish_type }}</h2>
+                     {% endif %}
+                 </div>
+                 <div class="dish-content">
+                    <h4>{{ dish.title }}</h4>
+                    <p>{{ dish.description }}</p>
+                     <button type=button class="btn btn-more" data-bs-toggle="modal" data-bs-target="#detail-dish-{{ dish.id }}">More</button>
+                 </div>
+             </div>
+         {% endfor %}
+         {% else %}
+            <div  class="page-el">
+                <div class="content">
+                    <h1 class="d-flex fw-bolder">There Are No Recipes</h1>
+                    <h6>Wait A Couple Of Minutes And Try Again</h6>
+                </div>
+            </div>
+         {% endif %}
+     </div>
+     {% for modal_dish in dishes %}
+         <div class="modal fade" id="detail-dish-{{ modal_dish.id }}" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+             <div class="modal-dialog modal-dialog-centered">
+                 <div class="modal-content">
+                     <div class="modal-body">
+                         <i class="bookmark"></i>
+                         <div class="detail-dish-content">
+                             <h5>Ingredients: </h5>
+                             <ul>
+                                 {% for ingredient in modal_dish.ingredients.all %}
+                                    <li>
+                                        <span class="ing-title">{{ ingredient.title }}</span>
+                                        <span class="ing-grammar">{{ ingredient.grammar }}</span>
+                                    </li>
+                                {% endfor %}
+                             </ul>
+                             <i class="separator"></i>
+                             <h5>Recipe: </h5>
+                             <ul>
+                             {% for recipe in modal_dish.recipes.all %}
+                                 <li>
+                                    <span class="recipe-step-position">{{ recipe.step_position }}</span>
+                                    <span class="recipe-step-text">{{ recipe.step_text }}</span>
+                                 </li>
+                             {% endfor %}
+                             </ul>
+                             <i class="separator"></i>
+                             <h5>Time:
+                                 <span>{{ modal_dish.cooking_time }}min</span>
+                             </h5>
+                             <h6>Link:
+                                 <a href="{{ modal_dish.link }}" target="_blank">
+                                    <span>{{ modal_dish.link }}</span>
+                                 </a>
+                             </h6>
+                         </div>
+                         <div class="btn-modal-close">
+                             <button class="btn" data-bs-dismiss="modal">Close</button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     {% endfor %}
+</body>
+{% endblock content %}

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(225deg, #ffec61, #fff );
+}
+
+.container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+
+.page-el
+{
+    position: relative;
+    width: 400px;
+    height: 450px;
+    margin: 30px;
+
+}
+
+.content
+{
+    position: absolute;
+    width: 100%;
+    padding: 30px;
+    padding-top: 140px;
+    text-align: center;
+}
+
+.content h1
+{
+    font-size: 2.7em;
+    color: #da2268;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ffaf00;;
+}
+
+
+.content h6
+{
+    font-size: 1.1em;
+    color: #ffaf00;
+    line-height: 1.5em;
+}
+
+
+
+.page-el:nth-child(1):hover
+{
+    opacity: 1;
+    transition: all 0.5s 3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: scale(1.3);
+    cursor: pointer;
+
+}
+
+.page-el:nth-child(2) .content
+{
+    top: 4%;
+}
+
+.search-box {
+    background-size: 100% 50%;
+    position: relative;
+    width: 400px;
+    height: 60px;
+    border: none;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.search-box input {
+    height: 100%;
+    width: 0;
+    border: none;
+    background: #fff;
+    font-size: 18px;
+    border-radius: 50px;
+    border: 2px solid #da2268;
+    padding: 0 60 20px;
+    outline: none;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+.search-box input.active {
+    opacity: 1;
+    width: 100%;
+    border: 2px solid #da2268;
+    color: #da2268;
+    cursor: pointer;
+
+
+}
+
+.search-box.active {
+    width: 350px;
+}
+
+.search-box .search-btn {
+   position: absolute;
+   top: 50%;
+   padding-bottom: 30px;
+   right: 0;
+   z-index: 1;
+   width: 50px;
+   height: 50px;
+   border: 2px solid #ffaf00;
+   border-radius: 50px;
+   color: #ffaf00;
+   background: #fff;
+   font-size: 20px;
+   text-align: center;
+   line-height: 50px;
+   transform: translateY(-50%);
+   cursor: pointer;
+   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+
+
+.search-box .search-btn.active {
+   position: absolute;
+   top: 50%;
+   right: 5px;
+   width: 50px;
+   height: 50px;
+   border-radius: 50px;
+   border: none;
+   color: #da2268;
+   box-shadow: none;
+   background-color: #fff;
+   transform: translateY(-50%) rotate(360deg);
+}
+
+
+.search-box .cancel-btn {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: #da2268;
+    font-size: 25px;
+    cursor: pointer;
+    transition: all 0.5s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.search-box .cancel-btn.active {
+    right: -40px;
+    transform: translateY(-50%) rotate(360deg);
+}

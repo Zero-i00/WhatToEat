@@ -1,0 +1,23 @@
+{% extends 'admin/change_list.html' %}
+{% block object-tools %}
+    <div>
+        <style>
+            .btn-red {
+                width: 150px;
+                height: 50px;
+                border: 2px solid rgba(0,0,0,0);
+                border-radius: 5px;
+                background-color: #ff000082
+            }
+            .btn-red:hover {
+                background-color: #99000082
+            }
+        </style>
+        <form action="parser/parse/parsing/" method="POST">
+            {% csrf_token %}
+                <button class="btn-red" type="submit">Update Data Base</button>
+        </form>
+    </div>
+    <br />
+    {{ block.super }}
+{% endblock %}

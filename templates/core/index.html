@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    What To Eat...
+{% endblock %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="page-el">
+            <div class="content" id="el-id">
+                <h1>What To Eat ?</h1>
+                <h6>Click And Find Out...
+                    <a href="{% url 'three_random_dishes' %}"></a>
+                </h6>
+            </div>
+        </div>
+        <div class="page-el">
+            <div class="content">
+                <form action="{% url 'three_random_dishes' %}">
+                    {% csrf_token %}
+
+                    <div class="search-box">
+
+                        <input type="button" value="Generate" id="generate_btn">
+
+                        <div class="search-btn">
+                            <i class="fas fa-hamburger"></i>
+                        </div>
+
+                        <div class="cancel-btn">
+                            <i class="fas fa-times"></i>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

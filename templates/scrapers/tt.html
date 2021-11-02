@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    BUTTON
+{% endblock %}
+{% block content %}
+    <form action="{% url 'scrap' %}" method="post">
+        {% csrf_token %}
+        <button style="width:100px;height:100px" type="submit"></button>
+    </form>
+{% endblock %}

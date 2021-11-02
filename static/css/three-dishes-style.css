@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(225deg, #ffec61, #fff );
+}
+
+.dishes-container
+{
+    position: relative;
+    width: 1150px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.dishes-container .dish-card
+{
+    position: relative;
+    width: 330px;
+    height: 450px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.dishes-container:hover .dish-card
+{
+    transform: scale(0.9);
+    opacity: 0.5;
+}
+
+.dishes-container .dish-card:hover
+{
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.dishes-container .dish-card .dish-circle
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #da2268;
+    clip-path: circle(180px at center 0);
+    text-align: center;
+}
+
+.dishes-container .dish-card .dish-circle img
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: block;
+    clip-path: circle(180px at center 0);
+    padding-bottom: 80%;
+
+}
+
+.dishes-container .dish-card .dish-content
+{
+    position: absolute;
+    bottom: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.dishes-container .dish-card .dish-content h4
+{
+    top: 5%;
+    font-size: 1.5em;
+    color: #666;
+}
+
+.dishes-container .dish-card .dish-content p
+{
+    font-size: 1em;
+    color: #666;
+}
+
+.dishes-container .dish-card .dish-content .btn-more
+{
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background: #da2268;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+div.modal-body
+{
+    position: relative;
+    top: 10%;
+    left: 50%;
+    width: 600px;
+    height: 900px;
+    margin-left: -300px;
+    background: #fff;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-radius: 30px;
+}
+
+div.modal-body .bookmark
+{
+    position: absolute;
+    top: 40px;
+    left: -30px;
+    width: 580px;
+    height: 50px;
+    background: #da2268;
+    border-radius: 30px;
+    border-bottom-left-radius: 0;
+}
+
+div.modal-body .bookmark::before
+{
+    content: "";
+    position: absolute;
+    top: 50px;
+    width: 30px;
+    height: 40px;
+    background: #BA1D59;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    z-index: 2;
+}
+
+div.modal-body .bookmark::after
+{
+    content: "";
+    position: absolute;
+    top: 50px;
+    width: 30px;
+    height: 20px;
+    background: #da2268;
+    z-index: 1;
+}
+
+div.modal-body .btn-modal-close
+{
+    position: absolute;
+    bottom: 20px;
+    left: 80%;
+}
+
+div.modal-body .btn-modal-close button
+{
+    align-text: center;
+    width: 80px;
+    height: 40px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: #fff;
+    background: #da2268;
+}
+
+div.modal-body .detail-dish-content
+{
+    position: absolute;
+    top: 15%;
+}
+
+div.modal-body .detail-dish-content .separator
+{
+    width: 98%;
+    height: 1.2px;
+    display: flex;
+    justify-content: center;
+    background: #B8B8B8;
+}
+
+div.modal-body .detail-dish-content ul
+{
+    position: relative;
+    bottom: 10%;
+    width: 550px;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+div.modal-body .detail-dish-content ul li
+{
+    display: flex;
+    background: #fff;
+    padding: 10px;
+    color: #fff;
+    margin: 5px 0;
+    line-height: 18px;
+}
+
+
+div.modal-body .detail-dish-content ul li span
+{
+    font-size: 0.9em;
+    color: #333;
+}
+
+
+div.modal-body .detail-dish-content ul li span:nth-child(2)
+{
+    width: 550px;
+    text-align: right;
+}
+
+div.modal-body .detail-dish-content ul li .recipe-step-text:nth-child(2)
+{
+    text-align: left;
+    padding-left: 10px;
+}
+
+div.modal-body .detail-dish-content h5
+{
+    color: #333;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    line-height: 1.2em;
+    font-weight: 500;
+}
+
+div.modal-body .detail-dish-content h6
+{
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.2em;
+    font-weight: 300;
+}
+
+div.modal-body .detail-dish-content a
+{
+    text-decoration: none;
+}
+
+
+div.modal-body .detail-dish-content span
+{
+    color: #da2268;
+    font-size: 0.8em;
+}
+
+.research-dishes-box
+{
+    background-size: 100% 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 60px;
+    border: none;
+}
+
+.research-dishes-btn
+{
+   position: absolute;
+   top: 0;
+   left: 0:
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow: auto;
+   z-index: 1;
+   width: 50px;
+   height: 50px;
+   border: 2px solid #da2268;
+   border-radius: 50px;
+   color: #da2268;
+   background: #fff;
+   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+   font-size: 20px;
+   text-align: center;
+   line-height: 50px;
+}
+
+.research-dishes-btn:hover
+{
+    opacity: 1;
+    transition: all 0.5s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: scale(1.2);
+}
+
